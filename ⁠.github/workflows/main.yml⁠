@@ -1,0 +1,23 @@
+name: M2M Test Bot
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # 代表每隔 15 分钟自动在云端跑一次
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run Test Script
+        run: |
+          echo "机械臂启动成功！正在连接云端..."
+          python -c "print('测试成功：我的第一个自动化节点正在安全运行！')"
